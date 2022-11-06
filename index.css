@@ -34,5 +34,6 @@ h1 {
 
 #canvas {
     border-style: solid;
+    border-radius: 10px;
 }
 
