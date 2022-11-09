@@ -29,7 +29,11 @@ function keydown_event(event) {
         case 40:
             new_direction = Direction.DOWN; break;
     }
-    game.direction = new_direction;
+    if (!array_shallow_equal(scalar_add(old_direction, new_direction), [0,0])) {
+        game.direction = new_direction;
+    } else {
+        console.log("180 degree turns are not allowed");
+    }
 }
 
 function init() {
@@ -53,11 +57,11 @@ function start_game() {
     pause_btn.disabled = false;
     reset_btn.disabled = true;
     // animate
-    animation_event = setInterval(() => game.incr(), FRAME_SPEED);
+    animation_event = setInterval(() => game.incr(stop_game), FRAME_SPEED);
 }
 
-function pause_game() {
-    console.log("pausing game!");
+function stop_game() {
+    console.log("stopping game!");
     start_btn.disabled = false;
     pause_btn.disabled = true;
     reset_btn.disabled = false;

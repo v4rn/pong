@@ -35,6 +35,7 @@ CanvasWrapper.prototype.start_position = function() {
 };
 
 CanvasWrapper.prototype.game_over_screen = function() {
+    this.clear();
     this.ctx.font = "30px Arial";
     this.ctx.fillText("Game over!", this.canvas.width / 2 - 100, this.canvas.height / 2);
 }
